@@ -1,3 +1,5 @@
+require "byebug"
+
 def range(min, max)
     return [] if max < min
     return [] if min == max
@@ -36,12 +38,37 @@ end
 # p exponent_2(2, 4)
 
 def dup(array)
-    return array if array.length <=0 
-    if !array[0].is_a?(Array)
-        [array[0]] + dup(array[1..-1])
-    else
-        dup(array[0].flatten) + array[1..-1]
-    end
-end
-p dup([1, 2,[3]])
 
+    return array.dup if !array.is_a?(Array)
+    output_array = []
+    array.each do |ele|
+        output_array << dup(ele)
+    end
+    output_array
+end
+
+# p dup([1, 2,[3]])
+
+def fibonacci(n)
+
+    return [0] if n == 0
+    return [0, 1] if n == 1
+    last_fibonacci = fibonacci(n-1)
+    last_fibonacci += [ last_fibonacci[-1] + last_fibonacci[-2] ]
+
+end
+
+# p fibonacci(7)
+
+def bsearch(array, target)
+    debugger
+
+    middle_element_idx = array.length / 2
+    middle_element = array[middle_element_idx]
+    return middle_element_idx if target == middle_element
+    bsearch(array[0...middle_element_idx], target) if target < middle_element
+    bsearch(array[middle_element_idx + 1..-1], target) if target > middle_element
+
+end
+
+p bsearch([1,2,3], 1)
