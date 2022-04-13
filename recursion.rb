@@ -37,15 +37,15 @@ end
 
 # p exponent_2(2, 4)
 
-def dup(array)
+# def dup(array)
 
-    return array.dup if !array.is_a?(Array)
-    output_array = []
-    array.each do |ele|
-        output_array << dup(ele)
-    end
-    output_array
-end
+#     return array.dup if !array.is_a?(Array)
+#     output_array = []
+#     array.each do |ele|
+#         output_array << dup(ele)
+#     end
+#     output_array
+# end
 
 # p dup([1, 2,[3]])
 
@@ -86,8 +86,13 @@ end
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 def merge_sort(array)
-
+    debugger
     return array if array.length == 0 || array.length == 1
+    return merge(array[0], array[1]) if array.length ==2
+    middle_element_idx = (array.length-1) / 2
+    left = array[0..middle_element_idx]
+    right = array[middle_element_idx+1..-1]
+    merge(merge_sort(left), merge_sort(right))
 
     
     
@@ -111,7 +116,7 @@ def merge(array_left, array_right)
     # array_left
 end
 
-p merge([27, 38], [3, 10])
+p merge_sort([38, 27, 43, 3, 9, 82, 10])
 
 # array_right.each do |ele_right|
 #     array_left.each do |ele_left|
