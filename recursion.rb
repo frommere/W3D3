@@ -10,4 +10,4 @@ def range_iterative(min, max)
     (min...max).each {|num| sum<< num}
     sum
 end
-p range_iterative(0, 3)
+# p range_iterative(0, 3)
