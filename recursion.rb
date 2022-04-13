@@ -112,6 +112,17 @@ def merge(array_left, array_right)
     results += array_left[array_left_index..-1] + array_right[array_right_index..-1]
 end
 
-p merge([1, 5, 24, 57, 60, 72, 83], [6, 14, 37, 97])
 
 # p merge_sort([38, 27, 43, 3, 9, 82, 10])
+
+def subsets(array)
+    debugger
+    return [array] if array.length == 0
+    subset = array[0..-2]
+    first_output = subsets(subset)
+    second_output = first_output.map{|ele| ele + [array[-1]]}
+    first_output + second_output
+end
+p subsets([1, 2, 3])
+
+
