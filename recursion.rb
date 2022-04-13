@@ -37,15 +37,15 @@ end
 
 # p exponent_2(2, 4)
 
-def dup(array)
+# def dup(array)
 
-    return array.dup if !array.is_a?(Array)
-    output_array = []
-    array.each do |ele|
-        output_array << dup(ele)
-    end
-    output_array
-end
+#     return array.dup if !array.is_a?(Array)
+#     output_array = []
+#     array.each do |ele|
+#         output_array << dup(ele)
+#     end
+#     output_array
+# end
 
 # p dup([1, 2,[3]])
 
@@ -61,14 +61,26 @@ end
 # p fibonacci(7)
 
 def bsearch(array, target)
-    debugger
-
     middle_element_idx = array.length / 2
     middle_element = array[middle_element_idx]
-    return middle_element_idx if target == middle_element
-    bsearch(array[0...middle_element_idx], target) if target < middle_element
-    bsearch(array[middle_element_idx + 1..-1], target) if target > middle_element
+    if array.length == 0
+        return nil
+    end
+    if target == middle_element
+        return middle_element_idx
+    elsif target < middle_element
+        return bsearch(array[0...middle_element_idx], target) 
+    elsif target > middle_element
+        return 1 + middle_element_idx + bsearch(array[middle_element_idx + 1..-1], target) if bsearch(array[middle_element_idx + 1..-1], target)!=nil
+        return nil
+    end
 
 end
 
-p bsearch([1,2,3], 1)
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
