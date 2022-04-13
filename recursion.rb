@@ -37,15 +37,15 @@ end
 
 # p exponent_2(2, 4)
 
-# def dup(array)
+def dup(array)
 
-#     return array.dup if !array.is_a?(Array)
-#     output_array = []
-#     array.each do |ele|
-#         output_array << dup(ele)
-#     end
-#     output_array
-# end
+    return array.dup if !array.is_a?(Array)
+    output_array = []
+    array.each do |ele|
+        output_array << dup(ele)
+    end
+    output_array
+end
 
 # p dup([1, 2,[3]])
 
@@ -84,3 +84,56 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
+def merge_sort(array)
+
+    return array if array.length == 0 || array.length == 1
+
+    
+    
+end
+
+def merge(array_left, array_right)
+
+    (array_left + array_right).sort
+
+    # array_left_index_zero = array_left[0]
+    # array_left_last_index = array_left[-1]
+    
+    # array_right.each do |ele|
+    #     if ele < array_left_index_zero
+    #         array_left.unshift(ele)
+    #     elsif
+    #         ele > array_left_last_index
+    #         array_left.push(ele)
+    #     end
+    # end
+    # array_left
+end
+
+p merge([27, 38], [3, 10])
+
+# array_right.each do |ele_right|
+#     array_left.each do |ele_left|
+#         if ele_left <= ele_right
+#             output << ele_left 
+#         else
+#             output << ele_right
+#         end
+#     end
+# end
+
+
+
+# i = 0
+
+# while i < array_left.length - 1 && i < array_right.length - 1
+#     if array_left[i] > array_right[i]
+#         array.push(array_left[i])
+#         array.unshift(array_right[i])
+#     else
+#         array.push(array_right[i])
+#         array.unshift(array_left[i])
+#     end
+#     i += 1
+# end
