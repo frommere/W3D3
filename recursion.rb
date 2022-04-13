@@ -86,59 +86,32 @@ end
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 def merge_sort(array)
-    debugger
     return array if array.length == 0 || array.length == 1
-    return merge(array[0], array[1]) if array.length ==2
     middle_element_idx = (array.length-1) / 2
     left = array[0..middle_element_idx]
     right = array[middle_element_idx+1..-1]
     merge(merge_sort(left), merge_sort(right))
-
-    
     
 end
 
 def merge(array_left, array_right)
 
-    (array_left + array_right).sort
+    results = []
+    array_left_index = 0
+    array_right_index = 0
 
-    # array_left_index_zero = array_left[0]
-    # array_left_last_index = array_left[-1]
-    
-    # array_right.each do |ele|
-    #     if ele < array_left_index_zero
-    #         array_left.unshift(ele)
-    #     elsif
-    #         ele > array_left_last_index
-    #         array_left.push(ele)
-    #     end
-    # end
-    # array_left
+    while array_left_index <= array_left.length - 1 && array_right_index <= array_right.length - 1
+        if array_left[array_left_index] < array_right[array_right_index]
+            results << array_left[array_left_index]
+            array_left_index += 1
+        else
+            results << array_right[array_right_index]
+            array_right_index += 1
+        end
+    end
+    results += array_left[array_left_index..-1] + array_right[array_right_index..-1]
 end
 
-p merge_sort([38, 27, 43, 3, 9, 82, 10])
+p merge([1, 5, 24, 57, 60, 72, 83], [6, 14, 37, 97])
 
-# array_right.each do |ele_right|
-#     array_left.each do |ele_left|
-#         if ele_left <= ele_right
-#             output << ele_left 
-#         else
-#             output << ele_right
-#         end
-#     end
-# end
-
-
-
-# i = 0
-
-# while i < array_left.length - 1 && i < array_right.length - 1
-#     if array_left[i] > array_right[i]
-#         array.push(array_left[i])
-#         array.unshift(array_right[i])
-#     else
-#         array.push(array_right[i])
-#         array.unshift(array_left[i])
-#     end
-#     i += 1
-# end
+# p merge_sort([38, 27, 43, 3, 9, 82, 10])
