@@ -35,3 +35,13 @@ end
 
 # p exponent_2(2, 4)
 
+def dup(array)
+    return array if array.length <=0 
+    if !array[0].is_a?(Array)
+        [array[0]] + dup(array[1..-1])
+    else
+        dup(array[0].flatten) + array[1..-1]
+    end
+end
+p dup([1, 2,[3]])
+
