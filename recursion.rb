@@ -123,6 +123,23 @@ def subsets(array)
     second_output = first_output.map{|ele| ele + [array[-1]]}
     first_output + second_output
 end
-p subsets([1, 2, 3])
+# p subsets([1, 2, 3])
 
 
+def permutations(array)
+
+    return array if array.length == 1
+    output = []
+
+    array.each_with_index do |ele, i|
+        
+
+        output << [ ele ] + permutations(array[i+1..-1]) + permutations(array[0...i])
+    end
+
+    output
+end
+
+p permutations([1,2,3])
+puts "--------"
+p [1,2,3].permutation.to_a
